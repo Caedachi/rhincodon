@@ -18,12 +18,7 @@ container.bind<Client>(Client).toConstantValue(new Client({
     intents: [Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILDS]
 }));
 
-container.bind<Echo>(Echo).to(Echo).inSingletonScope();
-
-const enabledCommands: Command[] = [
-    container.get<Echo>(Echo)
-];
-container.bind<Command[]>(TYPES.constants.commands).toConstantValue(enabledCommands);
+container.bind<Command>(TYPES.constants.commands).to(Echo).inSingletonScope();
 
 container.bind<RhincodonBot>(RhincodonBot).to(RhincodonBot).inSingletonScope();
 

@@ -1,5 +1,5 @@
 import { Client } from 'discord.js';
-import { inject, injectable } from 'inversify';
+import { inject, injectable, multiInject } from 'inversify';
 import { TYPES } from './types';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
@@ -19,7 +19,7 @@ export class RhincodonBot {
         @inject(TYPES.secrets.discordToken) token: string,
         @inject(TYPES.config.clientId) clientId: string,
         @inject(TYPES.config.guildId) guildId: string,
-        @inject(TYPES.constants.commands) commands: Command[],
+        @multiInject(TYPES.constants.commands) commands: Command[],
         @inject(TYPES.constants.map) map: Map<string, Command>
     ) {
         this.client = client;
