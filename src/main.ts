@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-import container from './container';
+import container from './inversify.config';
 import { RhincodonBot } from './rhincodon-bot';
 
 
