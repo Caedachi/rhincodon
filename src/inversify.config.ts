@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { Container } from 'inversify';
 import { TYPES } from './types';
 import { Client, Intents } from 'discord.js';
-import { Command } from './command';
+import { Command } from './model/command';
 import { RhincodonBot } from './rhincodon-bot';
 import * as config from '../config/config.json';
 
