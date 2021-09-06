@@ -1,13 +1,13 @@
 export const TYPES = {
     config: {
-        clientId: Symbol(),
-        guildId: Symbol()
+        clientId: Symbol('clientId'),
+        guildId: Symbol('guildId')
     },
     constants: {
-        commands: Symbol(),
-        map: Symbol()
+        commands: Symbol('commands'),
+        map: Symbol('map')
     },
     secrets: {
-        discordToken: Symbol()
+        discordToken: Symbol('discordToken')
     }
 };
