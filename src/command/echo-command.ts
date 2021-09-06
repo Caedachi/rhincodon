@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandInteraction } from 'discord.js';
 import { injectable } from 'inversify';
-import { Command } from './command';
+import { Command } from '../command';
 
 enum EchoParams {
     name = 'echo',
@@ -24,3 +24,5 @@ export class Echo implements Command {
         await interaction.reply(message);
     }
 }
+
+export default Echo;

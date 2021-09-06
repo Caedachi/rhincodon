@@ -2,8 +2,7 @@ import 'reflect-metadata';
 import { Container } from 'inversify';
 import { TYPES } from './types';
 import { Client, Intents } from 'discord.js';
-import { Echo } from './command/echo-command';
-import { Command } from './command/command';
+import { Command } from './command';
 import { RhincodonBot } from './rhincodon-bot';
 import * as config from '../config/config.json';
 
@@ -19,7 +18,14 @@ container.bind<Client>(Client).toConstantValue(new Client({
 }));
 
 // Commands
-container.bind<Command>(TYPES.constants.commands).to(Echo).inSingletonScope();
+
+const fs = require('fs');
+const commandFiles = fs.readdirSync('src/command').filter(file => file.endsWith('.ts')).map(file => './command/' + file.slice(0,-3));
+
+for (const file of commandFiles){
+    const command = require(file).default;
+    container.bind<Command>(TYPES.constants.commands).to(command).inSingletonScope();
+}
 
 // Bot
 container.bind<RhincodonBot>(RhincodonBot).to(RhincodonBot).inSingletonScope();
