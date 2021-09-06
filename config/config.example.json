@@ -2,5 +2,9 @@
     "discord": {
         "clientId": "",
         "guildId": ""
+    },
+    "logger": {
+        "resolve": "",
+        "level": ""
     }
 }
